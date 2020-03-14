@@ -39,7 +39,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="Iej-ja-EpM" appends="YES" id="xdP-Ke-5lM"/>
+                                    <outletCollection property="gestureRecognizers" destination="Kyu-Tb-rR0" appends="YES" id="pKA-ei-IeZ"/>
                                 </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RjK-Fb-1Ti">
@@ -66,13 +66,29 @@
                                     <action selector="didTapOptionThree:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EDb-9B-UaF"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3r4-H5-TxK">
+                                <rect key="frame" x="316" y="809" width="70" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="didTapOnNext:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cWZ-Zs-EXI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pPX-De-Rpo">
+                                <rect key="frame" x="28" y="809" width="60" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Prev"/>
+                                <connections>
+                                    <action selector="didTapOnPrev:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CHl-lQ-bI5"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7F-9l-L5N">
-                                <rect key="frame" x="161" y="797" width="92" height="41"/>
+                                <rect key="frame" x="161" y="804" width="92" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="34"/>
                                 <state key="normal" title="+"/>
                                 <connections>
-                                    <segue destination="ahH-s8-W42" kind="presentation" destinationCreationSelector="prepareForSegue:" id="4Aj-qF-L1d"/>
+                                    <segue destination="ahH-s8-W42" kind="presentation" id="qux-G9-Gbg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -83,13 +99,19 @@
                         <outlet property="backLabel" destination="nqT-zj-ms5" id="XbZ-ul-Gyo"/>
                         <outlet property="cardStyle" destination="lB1-x3-be6" id="Kof-bC-muQ"/>
                         <outlet property="frontLabel" destination="XF3-gu-ha2" id="I9j-N0-dHG"/>
+                        <outlet property="nextButton" destination="3r4-H5-TxK" id="Toz-if-2Ny"/>
                         <outlet property="optionOne" destination="RjK-Fb-1Ti" id="RPT-Fz-hHU"/>
                         <outlet property="optionThree" destination="sRm-Nh-B8C" id="fB8-11-FQo"/>
                         <outlet property="optionTwo" destination="LXA-d5-DpZ" id="IzZ-Dq-VFx"/>
+                        <outlet property="prevButton" destination="pPX-De-Rpo" id="woo-VB-RQV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Iej-ja-EpM"/>
+                <tapGestureRecognizer id="Kyu-Tb-rR0">
+                    <connections>
+                        <action selector="didTapOnFlashcard:" destination="BYZ-38-t0r" id="IkP-Q3-jV9"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-504.34782608695656" y="134.59821428571428"/>
         </scene>
@@ -101,14 +123,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Answer" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CLf-XD-NI4">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Question" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DZG-uH-hU2">
+                                <rect key="frame" x="52" y="115" width="278" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Answer" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CLf-XD-NI4">
                                 <rect key="frame" x="52" y="226" width="278" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Question" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DZG-uH-hU2">
-                                <rect key="frame" x="52" y="115" width="278" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Option 1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LOl-5E-e72">
+                                <rect key="frame" x="52" y="333" width="278" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Option 2" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dcM-oS-BIy">
+                                <rect key="frame" x="52" y="416" width="278" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Option 3" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dcv-6l-QoH">
+                                <rect key="frame" x="52" y="495" width="278" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -131,6 +171,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="answerTextField" destination="CLf-XD-NI4" id="2mT-3F-eg4"/>
+                        <outlet property="optionOneTextField" destination="LOl-5E-e72" id="Mw1-po-b5l"/>
+                        <outlet property="optionThreeTextField" destination="dcv-6l-QoH" id="Bs8-mZ-LJB"/>
+                        <outlet property="optionTwoTextField" destination="dcM-oS-BIy" id="vUm-BK-gU5"/>
                         <outlet property="questionTextField" destination="DZG-uH-hU2" id="a4b-nI-Uec"/>
                     </connections>
                 </viewController>
